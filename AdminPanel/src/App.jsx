@@ -1,4 +1,4 @@
-import { LayoutDashboard, Home, StickyNote, Calendar, Settings } from "lucide-react";
+import { LayoutDashboard, Home, UsersRound, Calendar, Settings } from "lucide-react";
 import { Sidebar, SidebarItem } from "./components/SideBar/SideBar";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Homepage from "./pages/Homepage";
@@ -6,6 +6,8 @@ import Dashboard from "./pages/Dashboard";
 import Notes from "./pages/Notes";
 import Users from "./pages/Users";
 import Setting from "./pages/Setting";
+import UserProfile from "./pages/UserProfile";
+import EditProfile from "./pages/EditProfile";
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
         <Sidebar>
           <SidebarItem icon={<Home size={20} />} text="Home" to="/" />
           <SidebarItem icon={<LayoutDashboard size={20} />} text="Dashboard" to="/dashboard" />
-          <SidebarItem icon={<StickyNote size={20} />} text="Users" to="/users"/>
+          <SidebarItem icon={<UsersRound size={20} />} text="Users" to="/users"/>
           <SidebarItem icon={<Calendar size={20} />} text="Notes" to="/notes" />
           <hr className="my-3" />
           <SidebarItem icon={<Settings size={20} />} text="Settings" to="/settings" />
@@ -26,6 +28,9 @@ function App() {
             <Route path="/users" element={<Users />} />
             <Route path="/notes" element={<Notes />} />
             <Route path="/settings" element={<Setting />} />
+            <Route path="/profile/:userId" element={<UserProfile />} />
+            <Route path="/editUser/:userId" element={<EditProfile/>} />
+
           </Routes>
         </main>
       </div>
