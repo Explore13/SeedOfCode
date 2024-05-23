@@ -46,7 +46,7 @@ const UsersTable = ({searchTerm}) => {
   return (
     <div className="rounded-lg border-x border-gray-300 bg-white px-5 pt-6 pb-2.5 shadow-lg sm:px-7.5 xl:pb-1">
       {successMessage && (
-        <div className="bg-red-200 text-red-800 gap-2 flex items-center p-2 rounded mb-4">
+        <div className="bg-red-200 text-red-800 flex gap-2  items-center p-2 fixed bottom-0 left-1/2 rounded mb-4">
           <CircleCheck size={15} className="" />
           {successMessage}
         </div>

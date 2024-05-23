@@ -48,7 +48,7 @@ const UsersCard = ({searchTerm}) => {
   return (
     <div>
       {successMessage && (
-        <div className="bg-green-200 flex gap-2 items-center text-green-800 p-2 rounded mb-4">
+        <div className="bg-green-200 flex gap-2 items-center text-green-800 fixed bottom-0 p-2 rounded mb-4">
         <CircleCheck size={15} className="" />
           {successMessage}
         </div>
