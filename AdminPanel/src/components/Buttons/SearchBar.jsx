@@ -1,14 +1,17 @@
 import React from 'react';
 
-const SearchButton = ({ text, onClick }) => {
+const SearchBar = ({ searchTerm, setSearchTerm, isMobileView }) => {
   return (
-    <button
-      onClick={onClick}
-      className="px-4 py-2 bg-primary text-white rounded-md shadow-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary-dark"
-    >
-      {text}
-    </button>
+    <div className={`mb-4`}>
+      <input
+        type="text"
+        placeholder="Search users..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className={` ${isMobileView?'w-full':'w-md'} p-2 border rounded-lg transition-colors shadow duration-200 hover:border-blue-600 focus:border-blue-600 focus:outline-none`}
+      />
+    </div>
   );
 };
 
-export default SearchButton;
+export default SearchBar;

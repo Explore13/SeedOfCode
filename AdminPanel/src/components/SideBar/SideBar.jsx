@@ -87,18 +87,17 @@ import {
 const SidebarContext = createContext();
 
 const Sidebar = ({ children }) => {
-  const [expanded, setExpanded] = useState(window.innerWidth > 768);
+  const [expanded, setExpanded] = useState(window.innerWidth > 1050);
   const [showArrowUp, setShowArrowUp] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setExpanded(window.innerWidth > 808);
+      setExpanded(window.innerWidth > 1050);
     };
 
     const handleScroll = () => {
       setShowArrowUp(window.scrollY >= 10);
     };
-    console.log(window.scrollY + " "+ showArrowUp);
 
     window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
@@ -113,10 +112,10 @@ const Sidebar = ({ children }) => {
   };
 
   const scrollToBottom = () => {
-    window.scrollTo({ top:document.body.scrollHeight, behavior: "smooth" });
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   };
   return (
-    <aside className="min-h-100">
+    <aside className="min-h-screen">
       <nav className=" h-full flex flex-col bg-white border-r shadow-sm">
         <div className="p-4 pb-2 flex justify-between items-center">
           <h1
@@ -165,14 +164,18 @@ const Sidebar = ({ children }) => {
           </div>
         </div>
 
-        <div className={`flex fixed bottom-0 right-0 p-3`}>
-          <button
-            onClick={showArrowUp ? scrollToTop : scrollToBottom}
-            className="rounded-full shadow-lg bg-gray-50 hover:bg-gray-100 flex items-center justify-center p-2 w-10 h-10"
-          >
-            {showArrowUp ? <ArrowUp size={20} /> : <ArrowDown size={20} />}
-          </button>
-        </div>
+        {!expanded ? (
+          <div className={`flex fixed bottom-0 left-0 p-3`}>
+            <button
+              onClick={showArrowUp ? scrollToTop : scrollToBottom}
+              className="rounded-full shadow-lg bg-gray-50 hover:bg-gray-100 flex items-center justify-center p-2 w-10 h-10"
+            >
+              {showArrowUp ? <ArrowUp size={20} /> : <ArrowDown size={20} />}
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
       </nav>
     </aside>
   );
